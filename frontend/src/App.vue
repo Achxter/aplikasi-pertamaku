@@ -10,7 +10,7 @@ console.log('API_BASE_URL:', API_BASE_URL);
 
 const getUser = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/user/${userId.value}`);
+    const response = await fetch(`/api/user/${userId.value}`);
     users.value = await response.json();
   } catch (error) {
     console.error('Failed to fetch user:', error);
