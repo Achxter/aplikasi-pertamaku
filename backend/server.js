@@ -7,8 +7,9 @@ import cors from 'cors';
 const app = express();
 app.use(express.json())
 app.use(cors({
-  origin: '*',
-  optionsSuccessStatus: 200,
+  origin: ['http://40.82.193.134'], // Replace with your frontend's URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the HTTP methods you allow
+  credentials: true
 }));
 
 const connection = new sqlite3.Database('./db/aplikasi.db')
