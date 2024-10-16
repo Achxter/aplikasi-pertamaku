@@ -5,8 +5,6 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-ARG API_BASE_URL
-ENV VITE_API_BASE_URL ${API_BASE_URL}
 
 # Stage 2: Serve
 FROM nginx:alpine
