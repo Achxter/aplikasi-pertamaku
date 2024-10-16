@@ -5,12 +5,11 @@ import CommentSection from './components/CommentSection.vue';
 const userId = ref('');
 const users = ref(null);
 const newEmail = ref('');
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-console.log('API_BASE_URL:', API_BASE_URL);
+const API_BASE_URL = process.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
 const getUser = async () => {
   try {
-    const response = await fetch(`/api/user/${userId.value}`);
+    const response = await fetch(`${API_BASE_URL}/api/user/${userId.value}`);
     users.value = await response.json();
   } catch (error) {
     console.error('Failed to fetch user:', error);
