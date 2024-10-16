@@ -7,9 +7,8 @@ services:
       - "80:80"
     networks:
       - app-network
-    env_file:
-      - path: ./.env
-        required: true
+    environment:
+      VITE_API_BASE_URL: "http://40.82.193.134:3000"
 
   backend:
     build:
@@ -21,6 +20,8 @@ services:
       - "3000:3000"
     networks:
       - app-network
+    environment:
+      VITE_API_BASE_URL: "http://42.80.193.134:3000"
 
 networks:
   app-network:
