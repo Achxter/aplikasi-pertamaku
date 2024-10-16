@@ -5,7 +5,7 @@ import CommentSection from './components/CommentSection.vue';
 const userId = ref('');
 const users = ref(null);
 const newEmail = ref('');
-const API_BASE_URL = process.env.VITE_API_BASE_URL;
+const API_BASE_URL = "http://40.82.193.134:3000";
 console.log('API_BASE_URL:', API_BASE_URL);
 
 const getUser = async () => {
