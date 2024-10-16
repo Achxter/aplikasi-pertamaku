@@ -23,7 +23,7 @@ const changeEmail = async () => {
     alert('Please enter a User ID');
     return;
   }
-  const response = await fetch(`http://localhost:3000/api/user/${userId.value}/change-email`, {
+  const response = await fetch(`${API_BASE_URL}/api/user/${userId.value}/change-email`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
