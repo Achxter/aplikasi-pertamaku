@@ -2,15 +2,17 @@
 import { ref } from 'vue';
 import CommentSection from './components/CommentSection.vue';
 
+const config = useRuntimeConfig()
+
 const userId = ref('');
 const users = ref(null);
 const newEmail = ref('');
-const API_BASE_URL = "http://40.82.193.134:3000" || 'http://localhost:3000';
-console.log('API_BASE_URL:', API_BASE_URL);
+const BASE_URL = config.public.API_BASE_URL ?? "http://localhost:3000";
+console.log('API_BASE_URL:', BASE_URL);
 
 const getUser = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/user/${userId.value}`);
+    const response = await fetch(`${BASE_URL}/api/user/${userId.value}`);
     users.value = await response.json();
   } catch (error) {
     console.error('Failed to fetch user:', error);
@@ -23,7 +25,7 @@ const changeEmail = async () => {
     alert('Please enter a User ID');
     return;
   }
-  const response = await fetch(`${API_BASE_URL}/api/user/${userId.value}/change-email`, {
+  const response = await fetch(`${BASE_URL}/api/user/${userId.value}/change-email`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
