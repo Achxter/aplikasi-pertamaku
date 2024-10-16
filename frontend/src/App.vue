@@ -40,7 +40,7 @@ const changeEmail = async () => {
 
 <template>
   <div id="app">
-    <h1>User Dashboard</h1>
+    <h1>User Dashboar</h1>
     <div>
       <input v-model="userId" placeholder="Enter User ID" />
       <button @click="getUser">Get User Info</button>
