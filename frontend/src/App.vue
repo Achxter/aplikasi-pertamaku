@@ -12,13 +12,23 @@ const getUser = async () => {
 };
 
 const changeEmail = async () => {
-  await fetch('http://localhost:3000/api/change-email', {
+  if (!userId.value) {
+    alert('Please enter a User ID');
+    return;
+  }
+  const response = await fetch(`http://localhost:3000/api/user/${userId.value}/change-email`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
     },
-    body: `email=${newEmail.value}`,
+    body: JSON.stringify({ email: newEmail.value }),
   });
+
+  if (response.ok) {
+    alert('Email updated successfully');
+  } else {
+    alert('Failed to update email');
+  }
 };
 </script>
 
