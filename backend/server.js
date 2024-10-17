@@ -46,8 +46,8 @@ app.post('/api/user/:id/change-email', (req, res) => {
 });
 
 app.get('/api/file', (req, res) => {
-  const __filename = fileURLToPath(import.meta.url); 
-  const __dirname = path.dirname(__filename); 
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
 
   const filePath = path.join(__dirname, 'files', req.query.name);
   res.sendFile(filePath);
