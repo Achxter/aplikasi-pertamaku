@@ -1,5 +1,5 @@
 import express from 'express';
-
+import rateLimit from 'express-rate-limit';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import sqlite3 from 'sqlite3';
@@ -12,6 +12,14 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the HTTP methods you allow
   credentials: true
 }));
+
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  limit: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+});
+
+app.use('/api/', limiter);
 
 const connection = new sqlite3.Database('./db/aplikasi.db')
 
