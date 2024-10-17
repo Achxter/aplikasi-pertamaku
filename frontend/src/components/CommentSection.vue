@@ -1,11 +1,15 @@
 <script setup>
 import { ref } from 'vue';
+import validator from 'validator'; // Import DOMPurify
 
 const comment = ref('');
 const comments = ref('');
 
+// Function to submit the comment
 const submitComment = () => {
-  comments.value += `<p>${comment.value}</p>`;
+  // Sanitize the comment before adding it to the comments
+  const sanitizedComment = validator.escape(comment.value);
+  comments.value += `<p>${sanitizedComment}</p>`;
   comment.value = '';
 };
 </script>
